@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class SpeedBoost : PowerUpBase
+public class ShieldBuff : PowerUpBase
 {
     public override void ApplyEffect(Player player)
     {
         if (player != null && !IsEffectActive)
         {
-            player.SetMoveSpeed(2);
+            player.SetInvulnerability(true);
             EffectActive();
         }
     }

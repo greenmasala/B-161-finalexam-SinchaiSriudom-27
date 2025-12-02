@@ -2,21 +2,26 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
     public float MoveSpeed
     {
         get { return moveSpeed; }
         private set { moveSpeed = value; }
     }
 
-    private bool isVulnerable;
+    [SerializeField] private bool isVulnerable;
     public bool IsVulnerable
     {
         get { return isVulnerable; }
         private set { isVulnerable = value; }
     }
 
-    private float jumpForce = 10f;
+    [SerializeField] private float jumpForce = 7f;
+    public float JumpForce
+    {
+        get { return jumpForce; }
+        private set { jumpForce = value; }
+    }
 
     private Rigidbody2D rb;
 
@@ -41,14 +46,21 @@ public class Player : MonoBehaviour
         PowerUpBase item = other.GetComponent<PowerUpBase>();
         if (item != null)
         {
-
+            item.ApplyEffect(this);
+            Destroy(item.gameObject);
         }
     }
 
     public void SetMoveSpeed(float newSpeed)
     {
         MoveSpeed *= newSpeed;
-        Debug.Log($"Speed increased by {newSpeed}! Current Speed: {MoveSpeed}");
+        Debug.Log($"Speed multiplied by {newSpeed}! Current Speed: {MoveSpeed}");
+    }
+
+    public void SetJumpForce(float newForce)
+    {
+        JumpForce *= newForce;
+        Debug.Log($"Jump force multiplied by {newForce}! Current Jump Force: {JumpForce}");
     }
 
     public void SetInvulnerability(bool isEnabled)

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-    public float MoveSpeed //made property of each variable that needs to be changed (ENCAPSULATION)
+    public float MoveSpeed //made property of each variable that needs to be changed 
     {
         get { return moveSpeed; }
         private set { moveSpeed = value; }
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void SetMoveSpeed(float newSpeed) //variables with properties can only be changed via methods. (ENCAPSULATION)
+    public void SetMoveSpeed(float newSpeed) //variables with properties can only be changed via methods. 
     {
         MoveSpeed *= newSpeed;
         Debug.Log($"Speed multiplied by {newSpeed}! Current Speed: {MoveSpeed}");
